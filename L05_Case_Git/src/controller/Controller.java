@@ -52,7 +52,7 @@ public abstract class Controller {
             LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
             LocalTime[] klokkeSlet, double[] antalEnheder) {
         DagligSkaev dagligSkaev = new DagligSkaev();
-        dagligSkaev.createDosis(klokkeSlet[0],antalEnheder[0]);
+        dagligSkaev.createDosis(klokkeSlet[0], antalEnheder[0]);
         return null;
     }
 
@@ -70,11 +70,20 @@ public abstract class Controller {
      * (afhænger af patientens vægt).
      */
     public static double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
-
-        return 0;
+        if (patient.getVaegt() <= 25) {
+            return laegemiddel.getEnhedPrKgPrDoegnLet();
+        } else if (patient.getVaegt() >= 25 && patient.getVaegt() <= 120) {
+            return laegemiddel.getEnhedPrKgPrDoegnNormal();
+        } else if (patient.getVaegt() >= 120) {
+            return laegemiddel.getEnhedPrKgPrDoegnTung();
+        } return 0;
     }
 
-    /** Returner antal ordinationer for det givne vægtinterval og det givne lægemiddel. */
+
+
+    /**
+     * Returner antal ordinationer for det givne vægtinterval og det givne lægemiddel.
+     */
     public static int antalOrdinationerPrVaegtPrLaegemiddel(
             double vaegtStart, double vaegtSlut, Laegemiddel laegemiddel) {
 
