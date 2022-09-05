@@ -9,10 +9,10 @@ public abstract class Ordination {
     private Laegemiddel laegemiddel;
 
 
-    public Ordination(LocalDate startDen, LocalDate slutDen, Patient patient) {
+    public Ordination(LocalDate startDen, LocalDate slutDen) {
         this.startDen = startDen;
         this.slutDen = slutDen;
-        patient.addOrdination(this);
+
 
     }
 
