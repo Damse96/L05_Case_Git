@@ -12,9 +12,6 @@ public class DagligSkaev extends Ordination {
         super(startDen, slutDen);
     }
 
-    public DagligSkaev() {
-        super();
-    }
 
 
     public ArrayList<Dosis> getDoser(){
