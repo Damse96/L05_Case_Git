@@ -1,8 +1,14 @@
 package ordination;
 
-import java.util.ArrayList;
+import java.lang.reflect.Array;
+import java.time.LocalTime;
+import java.util.Arrays;
 
 public class DagligFast {
-    private ArrayList<Dosis> dosering = new ArrayList<>();
+    private final Array[] doser = new Array[4];
+
+    public Array[] getDoser() {
+        return Arrays.copyOf(doser,4);
+    }
 
 }
