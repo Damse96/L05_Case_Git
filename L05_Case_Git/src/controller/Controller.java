@@ -51,7 +51,7 @@ public abstract class Controller {
     public static DagligSkaev opretDagligSkaevOrdination(
             LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
             LocalTime[] klokkeSlet, double[] antalEnheder) {
-        DagligSkaev dagligSkaev = new DagligSkaev(startDen,slutDen);
+        DagligSkaev dagligSkaev = new DagligSkaev();
         dagligSkaev.createDosis(klokkeSlet[0], antalEnheder[0]);
         return null;
     }
