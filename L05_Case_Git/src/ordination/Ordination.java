@@ -16,6 +16,10 @@ public abstract class Ordination {
 
     }
 
+    public Ordination() {
+
+    }
+
     public LocalDate getStartDen() {
         return startDen;
     }
