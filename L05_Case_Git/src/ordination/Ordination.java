@@ -6,6 +6,7 @@ import java.time.temporal.ChronoUnit;
 public abstract class Ordination {
     private LocalDate startDen;
     private LocalDate slutDen;
+    private Laegemiddel laegemiddel;
 
 
     public Ordination(LocalDate startDen, LocalDate slutDen, Patient patient) {
@@ -41,5 +42,17 @@ public abstract class Ordination {
 
     /** Returner ordinationstypen som en String. */
     public abstract String getType();
+
+    public Laegemiddel getLaegemiddel(){
+        return laegemiddel;
+    }
+
+    public void setLaegemiddel(Laegemiddel laegemiddel){
+        this.laegemiddel = laegemiddel;
+    }
+
+    public void removeLaegemiddel(){
+        this.laegemiddel = null;
+    }
 
 }
