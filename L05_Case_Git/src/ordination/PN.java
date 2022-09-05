@@ -7,6 +7,17 @@ public class PN {
     private Ordination ordination;
     private int doseret = 0;
 
+    public PN(double antalEnheder, Ordination ordination, int doseret) {
+        this.antalEnheder = antalEnheder;
+        this.ordination = ordination;
+        this.doseret = doseret;
+    }
+
+    public PN createPN(double antalEnheder, Ordination ordination, int doseret) {
+        PN pn = new PN(antalEnheder, ordination, doseret);
+        return pn;
+    }
+
     /**
      * Registrer, at der er givet en dosis paa dagen givesDen.
      * Returner true, hvis givesDen er inden for ordinationens gyldighedsperiode, og datoen huskes.

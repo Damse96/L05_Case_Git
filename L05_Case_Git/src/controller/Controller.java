@@ -51,16 +51,10 @@ public abstract class Controller {
     public static DagligSkaev opretDagligSkaevOrdination(
             LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
             LocalTime[] klokkeSlet, double[] antalEnheder) {
-        DagligSkaev dagligSkaev = null;
-        if (startDen.compareTo(slutDen) <= 0 && klokkeSlet.length == antalEnheder.length) {
-        }dagligSkaev = new DagligSkaev(startDen, slutDen);
-        patient.addOrdination(dagligSkaev);
-        for (int i = 0; i < klokkeSlet.length; i++) {
-            dagligSkaev.createDosis(klokkeSlet[i], antalEnheder[i]);
-        }
-        return dagligSkaev;
+        DagligSkaev dagligSkaev = new DagligSkaev();
+        dagligSkaev.createDosis(klokkeSlet[0], antalEnheder[0]);
+        return null;
     }
-
 
     /**
      * Tilføj en dato for anvendelse af PN ordinationen.
