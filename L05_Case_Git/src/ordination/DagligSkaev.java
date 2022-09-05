@@ -17,14 +17,4 @@ public class DagligSkaev {
         return dosis;
 
     }
-
-
-
-    public void opretDosis(LocalTime tid, double antal) {
-       double amount = 0;
-        for (double ant: Dosis.){
-
-        }
-
-    }
 }
