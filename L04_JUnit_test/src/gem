@@ -1,0 +1,40 @@
+ public Library(String name, boolean adult, LocalDate calculatedDate, LocalDate actualDate) {
+        this.name = name;
+        this.adult = adult;
+        this.calculatedDate = calculatedDate;
+        this.actualDate = actualDate;
+    }
+
+    public void setAdult(boolean adult) {
+        this.adult = adult;
+    }
+
+    public void setCalculatedDate(LocalDate calculatedDate) {
+        this.calculatedDate = calculatedDate;
+    }
+
+    public void setActualDate(LocalDate actualDate) {
+        this.actualDate = actualDate;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isAdult() {
+        return adult;
+    }
+
+    public LocalDate getCalculatedDate() {
+        return calculatedDate;
+    }
+
+    public LocalDate getActualDate() {
+        return actualDate;
+    }
+
+    public List<LocalDate> getLocalDate(){}
