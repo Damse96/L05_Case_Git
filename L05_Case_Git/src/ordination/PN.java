@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class PN {
     private double antalEnheder;
     private Ordination ordination;
+    private int doseret = 0;
 
     /**
      * Registrer, at der er givet en dosis paa dagen givesDen.
@@ -13,6 +14,7 @@ public class PN {
      */
     public boolean givDosis(LocalDate givesDen) {
         boolean IndenForGyldighed = false;
+        doseret++;
         int i = 0;
         while (!IndenForGyldighed || i < 1){
             if (givesDen.isBefore(ordination.getSlutDen())&&givesDen.isAfter(ordination.getStartDen())){
@@ -25,7 +27,6 @@ public class PN {
 
     /** Returner antal gange ordinationen er anvendt. */
     public int getAntalGangeGivet() {
-
-        return -1;
+        return doseret;
     }
 }
