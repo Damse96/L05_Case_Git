@@ -13,10 +13,13 @@ public class PN {
      */
     public boolean givDosis(LocalDate givesDen) {
         boolean IndenForGyldighed = false;
-        while (!IndenForGyldighed)
+        int i = 0;
+        while (!IndenForGyldighed || i < 1){
             if (givesDen.isBefore(ordination.getSlutDen())&&givesDen.isAfter(ordination.getStartDen())){
                 IndenForGyldighed = true;
             }
+            else i++;
+        }
         return false;
     }
 
