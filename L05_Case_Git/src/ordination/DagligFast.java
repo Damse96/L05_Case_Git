@@ -1,8 +1,6 @@
 package ordination;
 
-import java.lang.reflect.Array;
-import java.time.LocalTime;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class DagligFast {
     private final Array[] doser = new Array[4];
