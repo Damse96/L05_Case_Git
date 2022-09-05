@@ -38,4 +38,6 @@ public abstract class Ordination {
 
     /** Returner ordinationstypen som en String. */
     public abstract String getType();
+
+    public
 }
