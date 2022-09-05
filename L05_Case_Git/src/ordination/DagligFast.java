@@ -1,14 +1,12 @@
 package ordination;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+
 import java.util.Arrays;
 
 public class DagligFast {
-    private final Array[] doser = new Array[4];
+    private final Dosis[] doser = new Dosis[4];
 
-    public Array[] getDoser() {
+    public Dosis[] getDoser() {
         return Arrays.copyOf(doser,4);
     }
-
 }
