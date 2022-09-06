@@ -36,7 +36,8 @@ public abstract class Controller {
     public static DagligFast opretDagligFastOrdination(
             LocalDate startDato, LocalDate slutDato, Patient patient, Laegemiddel laegemiddel,
             double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
-
+        DagligFast dagligFast = new DagligFast(startDato, slutDato, patient, morgenAntal, middagAntal, aftenAntal, natAntal);
+        dagligFast.setLaegemiddel(laegemiddel);
         return null;
     }
 
@@ -49,11 +50,14 @@ public abstract class Controller {
      * Pre: I antalEnheder er alle tal >= 0.
      */
     public static DagligSkaev opretDagligSkaevOrdination(
-            LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
+            LocalDate startDato, LocalDate slutDato, Patient patient, Laegemiddel laegemiddel,
             LocalTime[] klokkeSlet, double[] antalEnheder) {
-        DagligSkaev dagligSkaev = new DagligSkaev();
-        dagligSkaev.createDosis(klokkeSlet[0], antalEnheder[0]);
-        return null;
+        DagligSkaev dagligSkaev = new DagligSkaev(startDato, slutDato, patient);
+        dagligSkaev.setLaegemiddel(laegemiddel);
+        for (int i = 0; i < klokkeSlet.length && i < antalEnheder.length; i++) {
+            dagligSkaev.opretDosis(klokkeSlet[i],antalEnheder[i]);
+        }
+        return dagligSkaev;
     }
 
     /**
@@ -142,7 +146,7 @@ public abstract class Controller {
         opretPNOrdination(LocalDate.parse("2019-01-20"), LocalDate.parse("2019-01-25"),
                 ib, fucidin, 5);
 
-        opretPNOrdination(LocalDate.parse("2019-01-01"), LocalDate.parse("2019.01-12"),
+        opretPNOrdination(LocalDate.parse("2019-01-01"), LocalDate.parse("2019-01-12"),
                 jane, paracetamol, 123);
 
         opretDagligFastOrdination(LocalDate.parse("2019-01-10"), LocalDate.parse("2019-01-12"),

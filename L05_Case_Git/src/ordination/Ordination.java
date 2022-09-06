@@ -4,34 +4,35 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public abstract class Ordination {
-    private LocalDate startDen;
-    private LocalDate slutDen;
+    private LocalDate startDato;
+    private LocalDate slutDato;
+    private Patient patient;
     private Laegemiddel laegemiddel;
 
-    public Ordination(LocalDate startDen, LocalDate slutDen) {
-        this.startDen = startDen;
-        this.slutDen = slutDen;
-
+    public Ordination(LocalDate startDato, LocalDate slutDato, Patient patient) {
+        this.startDato = startDato;
+        this.slutDato = slutDato;
+        this.patient = patient;
     }
 
 
 
-    public LocalDate getStartDen() {
-        return startDen;
+    public LocalDate getStartDato() {
+        return startDato;
     }
 
-    public LocalDate getSlutDen() {
-        return slutDen;
+    public LocalDate getSlutDato() {
+        return slutDato;
     }
 
     /** Returner antal hele dage mellem startdato og slutdato. Begge dage inklusive. */
     public int antalDage() {
-        return (int) ChronoUnit.DAYS.between(startDen, slutDen) + 1;
+        return (int) ChronoUnit.DAYS.between(startDato, slutDato) + 1;
     }
 
     @Override
     public String toString() {
-        return startDen.toString();
+        return startDato.toString();
     }
 
     /** Returner den totale dosis, der er givet i den periode ordinationen er gyldig. */

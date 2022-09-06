@@ -2,20 +2,16 @@ package ordination;
 
 import java.time.LocalDate;
 
-public class PN {
+public class PN extends Ordination {
     private double antalEnheder;
     private Ordination ordination;
     private int doseret = 0;
 
-    public PN(double antalEnheder, Ordination ordination, int doseret) {
+    public PN(LocalDate startDato, LocalDate slutDato, Patient patient, double antalEnheder, int doseret) {
+        super(startDato, slutDato, patient);
         this.antalEnheder = antalEnheder;
         this.ordination = ordination;
         this.doseret = doseret;
-    }
-
-    public PN createPN(double antalEnheder, Ordination ordination, int doseret) {
-        PN pn = new PN(antalEnheder, ordination, doseret);
-        return pn;
     }
 
     /**
@@ -28,7 +24,7 @@ public class PN {
         doseret++;
         int i = 0;
         while (!IndenForGyldighed || i < 1){
-            if (givesDen.isBefore(ordination.getSlutDen())&&givesDen.isAfter(ordination.getStartDen())){
+            if (givesDen.isBefore(ordination.getSlutDato())&&givesDen.isAfter(ordination.getStartDato())){
                 IndenForGyldighed = true;
             }
             else i++;
@@ -39,5 +35,24 @@ public class PN {
     /** Returner antal gange ordinationen er anvendt. */
     public int getAntalGangeGivet() {
         return doseret;
+    }
+
+    @Override
+    public double samletDosis() {
+        return 0;
+    }
+
+    @Override
+    public double doegnDosis() {
+        return 0;
+    }
+
+    @Override
+    public String getType() {
+        return null;
+    }
+
+    public double getAntalEnheder() {
+        return antalEnheder;
     }
 }

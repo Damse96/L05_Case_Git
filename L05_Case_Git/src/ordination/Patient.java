@@ -33,4 +33,8 @@ public class Patient {
 
     public void addOrdination(Ordination ordination) {
     }
+
+    public ArrayList<Ordination> getOrdinationer() {
+        return ordinationer;
+    }
 }
