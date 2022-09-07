@@ -3,7 +3,6 @@ package ordination;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 
 public class DagligFast extends Ordination {
     private Dosis[] doses = new Dosis[4];

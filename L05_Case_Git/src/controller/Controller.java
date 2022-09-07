@@ -23,8 +23,11 @@ public abstract class Controller {
     public static PN opretPNOrdination(
             LocalDate startDato, LocalDate slutDato, Patient patient, Laegemiddel laegemiddel,
             double antal) {
-
-        return null;
+        if (startDato.isAfter(slutDato))
+            throw new IllegalArgumentException();
+        PN pn = new PN(startDato,slutDato,patient,antal);
+        pn.setLaegemiddel(laegemiddel);
+        return pn;
     }
 
     /**
@@ -36,9 +39,11 @@ public abstract class Controller {
     public static DagligFast opretDagligFastOrdination(
             LocalDate startDato, LocalDate slutDato, Patient patient, Laegemiddel laegemiddel,
             double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
+        if (startDato.isAfter(slutDato))
+            throw new IllegalArgumentException();
         DagligFast dagligFast = new DagligFast(startDato, slutDato, patient, morgenAntal, middagAntal, aftenAntal, natAntal);
         dagligFast.setLaegemiddel(laegemiddel);
-        return null;
+        return dagligFast;
     }
 
     /**
@@ -52,9 +57,11 @@ public abstract class Controller {
     public static DagligSkaev opretDagligSkaevOrdination(
             LocalDate startDato, LocalDate slutDato, Patient patient, Laegemiddel laegemiddel,
             LocalTime[] klokkeSlet, double[] antalEnheder) {
+        if (startDato.isAfter(slutDato) || klokkeSlet.length != antalEnheder.length)
+            throw new IllegalArgumentException();
         DagligSkaev dagligSkaev = new DagligSkaev(startDato, slutDato, patient);
         dagligSkaev.setLaegemiddel(laegemiddel);
-        for (int i = 0; i < klokkeSlet.length && i < antalEnheder.length; i++) {
+        for (int i = 0; i < antalEnheder.length; i++) {
             dagligSkaev.opretDosis(klokkeSlet[i],antalEnheder[i]);
         }
         return dagligSkaev;
@@ -66,7 +73,9 @@ public abstract class Controller {
      * kastes en IllegalArgumentException.
      */
     public static void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-
+        if (dato.isAfter(ordination.getStartDato()) && dato.isBefore(ordination.getSlutDato()))
+            throw new IllegalArgumentException("PN ordination er uden for gyldighedsperioden");
+        ordination.givDosis(dato);
     }
 
     /**
