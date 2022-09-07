@@ -6,8 +6,8 @@ public class PN extends Ordination {
     private double antalEnheder;
     private int doseret = 0;
 
-    public PN(LocalDate startDato, LocalDate slutDato, Patient patient, double antalEnheder) {
-        super(startDato, slutDato, patient);
+    public PN(LocalDate startDato, LocalDate slutDato, double antalEnheder) {
+        super(startDato, slutDato);
         this.antalEnheder = antalEnheder;
     }
 

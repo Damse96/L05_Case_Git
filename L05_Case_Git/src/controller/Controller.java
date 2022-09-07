@@ -25,7 +25,7 @@ public abstract class Controller {
             double antal) {
         if (startDato.isAfter(slutDato))
             throw new IllegalArgumentException();
-        PN pn = new PN(startDato,slutDato,patient,antal);
+        PN pn = new PN(startDato,slutDato,antal);
         pn.setLaegemiddel(laegemiddel);
         patient.addOrdination(pn);
         return pn;
@@ -42,7 +42,7 @@ public abstract class Controller {
             double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
         if (startDato.isAfter(slutDato))
             throw new IllegalArgumentException();
-        DagligFast dagligFast = new DagligFast(startDato, slutDato, patient, morgenAntal, middagAntal, aftenAntal, natAntal);
+        DagligFast dagligFast = new DagligFast(startDato, slutDato, morgenAntal, middagAntal, aftenAntal, natAntal);
         dagligFast.setLaegemiddel(laegemiddel);
         patient.addOrdination(dagligFast);
         return dagligFast;
@@ -61,7 +61,7 @@ public abstract class Controller {
             LocalTime[] klokkeSlet, double[] antalEnheder) {
         if (startDato.isAfter(slutDato) || klokkeSlet.length != antalEnheder.length)
             throw new IllegalArgumentException();
-        DagligSkaev dagligSkaev = new DagligSkaev(startDato, slutDato, patient);
+        DagligSkaev dagligSkaev = new DagligSkaev(startDato, slutDato);
         dagligSkaev.setLaegemiddel(laegemiddel);
         for (int i = 0; i < antalEnheder.length; i++) {
             dagligSkaev.opretDosis(klokkeSlet[i],antalEnheder[i]);
@@ -102,8 +102,18 @@ public abstract class Controller {
      */
     public static int antalOrdinationerPrVaegtPrLaegemiddel(
             double vaegtStart, double vaegtSlut, Laegemiddel laegemiddel) {
+        int sum = 0;
+        for (Patient patient : storage.getAllPatienter()) {
+            if (vaegtStart < patient.getVaegt() && patient.getVaegt() < vaegtSlut) {
+                for (Ordination ordination : patient.getOrdinationer()) {
+                   if (ordination.getLaegemiddel().equals(laegemiddel)) {
+                       sum++;
+                   }
+                }
+            }
+        }
 
-        return 0;
+        return sum;
     }
 
     public static List<Patient> getAllPatienter() {

@@ -7,8 +7,8 @@ import java.time.LocalTime;
 public class DagligFast extends Ordination {
     private Dosis[] doses = new Dosis[4];
 
-    public DagligFast(LocalDate startDato, LocalDate slutDato, Patient patient, double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
-        super(startDato, slutDato, patient);
+    public DagligFast(LocalDate startDato, LocalDate slutDato, double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
+        super(startDato, slutDato);
         doses[0] = new Dosis(LocalTime.of(9,0),morgenAntal);
         doses[1] = new Dosis(LocalTime.NOON,middagAntal);
         doses[2] = new Dosis(LocalTime.of(20,0),aftenAntal);
