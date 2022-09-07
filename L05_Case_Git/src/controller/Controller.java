@@ -27,6 +27,7 @@ public abstract class Controller {
             throw new IllegalArgumentException();
         PN pn = new PN(startDato,slutDato,patient,antal);
         pn.setLaegemiddel(laegemiddel);
+        patient.addOrdination(pn);
         return pn;
     }
 
@@ -43,6 +44,7 @@ public abstract class Controller {
             throw new IllegalArgumentException();
         DagligFast dagligFast = new DagligFast(startDato, slutDato, patient, morgenAntal, middagAntal, aftenAntal, natAntal);
         dagligFast.setLaegemiddel(laegemiddel);
+        patient.addOrdination(dagligFast);
         return dagligFast;
     }
 
@@ -64,6 +66,7 @@ public abstract class Controller {
         for (int i = 0; i < antalEnheder.length; i++) {
             dagligSkaev.opretDosis(klokkeSlet[i],antalEnheder[i]);
         }
+        patient.addOrdination(dagligSkaev);
         return dagligSkaev;
     }
 

@@ -32,6 +32,7 @@ public class Patient {
     }
 
     public void addOrdination(Ordination ordination) {
+        ordinationer.add(ordination);
     }
 
     public ArrayList<Ordination> getOrdinationer() {

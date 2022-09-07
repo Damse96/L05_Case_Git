@@ -15,8 +15,6 @@ public abstract class Ordination {
         this.patient = patient;
     }
 
-
-
     public LocalDate getStartDato() {
         return startDato;
     }
