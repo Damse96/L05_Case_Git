@@ -1,12 +1,36 @@
 package ordination;
 
 
-import java.util.Arrays;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-public class DagligFast {
-    private final Dosis[] doser = new Dosis[4];
+public class DagligFast extends Ordination {
+    private Dosis[] doses = new Dosis[4];
+
+    public DagligFast(LocalDate startDato, LocalDate slutDato, double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
+        super(startDato, slutDato);
+        doses[0] = new Dosis(LocalTime.of(9,0),morgenAntal);
+        doses[1] = new Dosis(LocalTime.NOON,middagAntal);
+        doses[2] = new Dosis(LocalTime.of(20,0),aftenAntal);
+        doses[3] = new Dosis(LocalTime.MIDNIGHT,natAntal);
+    }
+
+    @Override
+    public double samletDosis() {
+        return 0;
+    }
+
+    @Override
+    public double doegnDosis() {
+        return 0;
+    }
+
+    @Override
+    public String getType() {
+        return null;
+    }
 
     public Dosis[] getDoser() {
-        return Arrays.copyOf(doser,4);
+        return doses;
     }
 }

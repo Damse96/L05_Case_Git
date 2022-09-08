@@ -23,8 +23,12 @@ public abstract class Controller {
     public static PN opretPNOrdination(
             LocalDate startDato, LocalDate slutDato, Patient patient, Laegemiddel laegemiddel,
             double antal) {
-
-        return null;
+        if (startDato.isAfter(slutDato))
+            throw new IllegalArgumentException();
+        PN pn = new PN(startDato,slutDato,antal);
+        pn.setLaegemiddel(laegemiddel);
+        patient.addOrdination(pn);
+        return pn;
     }
 
     /**
@@ -36,8 +40,12 @@ public abstract class Controller {
     public static DagligFast opretDagligFastOrdination(
             LocalDate startDato, LocalDate slutDato, Patient patient, Laegemiddel laegemiddel,
             double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
-
-        return null;
+        if (startDato.isAfter(slutDato))
+            throw new IllegalArgumentException();
+        DagligFast dagligFast = new DagligFast(startDato, slutDato, morgenAntal, middagAntal, aftenAntal, natAntal);
+        dagligFast.setLaegemiddel(laegemiddel);
+        patient.addOrdination(dagligFast);
+        return dagligFast;
     }
 
     /**
@@ -49,11 +57,17 @@ public abstract class Controller {
      * Pre: I antalEnheder er alle tal >= 0.
      */
     public static DagligSkaev opretDagligSkaevOrdination(
-            LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
+            LocalDate startDato, LocalDate slutDato, Patient patient, Laegemiddel laegemiddel,
             LocalTime[] klokkeSlet, double[] antalEnheder) {
-        DagligSkaev dagligSkaev = new DagligSkaev();
-        dagligSkaev.createDosis(klokkeSlet[0], antalEnheder[0]);
-        return null;
+        if (startDato.isAfter(slutDato) || klokkeSlet.length != antalEnheder.length)
+            throw new IllegalArgumentException();
+        DagligSkaev dagligSkaev = new DagligSkaev(startDato, slutDato);
+        dagligSkaev.setLaegemiddel(laegemiddel);
+        for (int i = 0; i < antalEnheder.length; i++) {
+            dagligSkaev.opretDosis(klokkeSlet[i],antalEnheder[i]);
+        }
+        patient.addOrdination(dagligSkaev);
+        return dagligSkaev;
     }
 
     /**
@@ -62,7 +76,9 @@ public abstract class Controller {
      * kastes en IllegalArgumentException.
      */
     public static void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-
+        if (dato.isAfter(ordination.getStartDato()) && dato.isBefore(ordination.getSlutDato()))
+            throw new IllegalArgumentException("PN ordination er uden for gyldighedsperioden");
+        ordination.givDosis(dato);
     }
 
     /**
@@ -86,8 +102,18 @@ public abstract class Controller {
      */
     public static int antalOrdinationerPrVaegtPrLaegemiddel(
             double vaegtStart, double vaegtSlut, Laegemiddel laegemiddel) {
+        int sum = 0;
+        for (Patient patient : storage.getAllPatienter()) {
+            if (vaegtStart < patient.getVaegt() && patient.getVaegt() < vaegtSlut) {
+                for (Ordination ordination : patient.getOrdinationer()) {
+                   if (ordination.getLaegemiddel().equals(laegemiddel)) {
+                       sum++;
+                   }
+                }
+            }
+        }
 
-        return 0;
+        return sum;
     }
 
     public static List<Patient> getAllPatienter() {
@@ -142,7 +168,7 @@ public abstract class Controller {
         opretPNOrdination(LocalDate.parse("2019-01-20"), LocalDate.parse("2019-01-25"),
                 ib, fucidin, 5);
 
-        opretPNOrdination(LocalDate.parse("2019-01-01"), LocalDate.parse("2019.01-12"),
+        opretPNOrdination(LocalDate.parse("2019-01-01"), LocalDate.parse("2019-01-12"),
                 jane, paracetamol, 123);
 
         opretDagligFastOrdination(LocalDate.parse("2019-01-10"), LocalDate.parse("2019-01-12"),
