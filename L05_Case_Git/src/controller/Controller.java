@@ -181,4 +181,8 @@ public abstract class Controller {
         opretDagligSkaevOrdination(LocalDate.parse("2019-01-23"), LocalDate.parse("2019-01-24"),
                 finn, fucidin, kl, an);
     }
+
+    public static Storage getStorage() {
+        return storage;
+    }
 }

@@ -4,11 +4,11 @@ package controller;
 import ordination.*;
 
 import org.junit.jupiter.api.Test;
+import storage.Storage;
 
 import java.time.LocalDate;
 
 class ControllerTest {
-
     Patient jane = new Patient("050972-1233", "Hans Jørgensen", 89.4);
     Patient finn = new Patient("070985-1153", "Finn Madsen", 83.2);
     Patient ib = new Patient("090149-2529", "Ib Hansen", 87.7);
@@ -41,7 +41,15 @@ class ControllerTest {
 
     @Test
     void opretDagligSkaevOrdination() {
-        opretDagligSkaevOrdination();
+        Controller.initStorage();
+
+        DagligSkaev dagligSkaev = Controller.opretDagligSkaevOrdination(
+                LocalDate.parse("2019-01-01"),
+                LocalDate.parse("2019-01-12"),
+                ,
+                paracetamol,
+
+        );
 
 
     }
