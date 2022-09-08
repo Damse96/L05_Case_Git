@@ -21,7 +21,7 @@ public class DagligFast extends Ordination {
         for (Dosis dose : doses) {
             antal += dose.getAntal();
         }
-        return antal * super.getStartDato().compareTo(getSlutDato());
+        return antal * super.getSlutDato().compareTo(getStartDato());
     }
 
     @Override
