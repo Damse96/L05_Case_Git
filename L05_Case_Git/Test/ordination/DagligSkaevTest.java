@@ -19,7 +19,7 @@ class DagligSkaevTest {
         //act
         double actualResult = ds.samletDosis();
         //assert
-        assertEquals(6, actualResult);
+        assertEquals(8, actualResult);
     }
 
     @Test
@@ -31,7 +31,7 @@ class DagligSkaevTest {
         //act
         double actualResult = ds.samletDosis();
         //assert
-        assertEquals(62, actualResult);
+        assertEquals(64, actualResult);
     }
 
     @Test
@@ -43,6 +43,6 @@ class DagligSkaevTest {
         //act
         double actualResult = ds.samletDosis();
         //assert
-        assertEquals(730, actualResult);
+        assertEquals(732, actualResult);
     }
 }
