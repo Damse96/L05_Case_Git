@@ -17,17 +17,25 @@ public class DagligFast extends Ordination {
 
     @Override
     public double samletDosis() {
-        return 0;
+        double antal = 0;
+        for (Dosis dose : doses) {
+            antal += dose.getAntal();
+        }
+        return antal * super.getStartDato().compareTo(getSlutDato());
     }
 
     @Override
     public double doegnDosis() {
-        return 0;
+        double antal = 0;
+        for (Dosis dose : doses) {
+            antal += dose.getAntal();
+        }
+        return antal;
     }
 
     @Override
     public String getType() {
-        return null;
+        return "DagligFast";
     }
 
     public Dosis[] getDoser() {
