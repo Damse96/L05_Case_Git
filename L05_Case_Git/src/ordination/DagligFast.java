@@ -22,7 +22,7 @@ public class DagligFast extends Ordination {
         for (Dosis dose : doses) {
             antal += dose.getAntal();
         }
-        return antal * ChronoUnit.DAYS.between(getStartDato(), getSlutDato());
+        return antal * antalDage();
     }
 
     @Override

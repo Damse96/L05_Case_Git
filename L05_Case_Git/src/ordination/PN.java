@@ -32,7 +32,7 @@ public class PN extends Ordination {
 
     @Override
     public double samletDosis() {
-        return antalEnheder * ChronoUnit.DAYS.between(getStartDato(), getSlutDato());
+        return antalEnheder * antalDage();
     }
 
     @Override
