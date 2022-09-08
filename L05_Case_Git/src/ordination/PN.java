@@ -18,11 +18,11 @@ public class PN extends Ordination {
      * Returner false ellers, og datoen givesDen ignoreres.
      */
     public boolean givDosis(LocalDate dato) {
-        if (dato.isAfter(getStartDato()) && dato.isBefore(getSlutDato())) {
-            doseret++;
-            return true;
+        if (dato.isBefore(getStartDato()) || dato.isAfter(getSlutDato())) {
+            return false;
         }
-        return false;
+        doseret++;
+        return true;
     }
 
     /** Returner antal gange ordinationen er anvendt. */

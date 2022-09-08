@@ -9,7 +9,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class PNTest {
 
     @Test
-    void givDosisFalse() {
+    void givDosisFalseBeforeDate() {
+        //arrange
+        PN pn = new PN(LocalDate.of(2022,7,2),
+                LocalDate.of(2022, 7, 5),2);
+        //act
+        boolean actualResult = pn.givDosis(LocalDate.of(2022,7,1));
+        //assert
+        assertFalse(actualResult);
+    }
+
+    @Test
+    void givDosisFalseAfterDate() {
         //arrange
         PN pn = new PN(LocalDate.of(2022,7,2),
                 LocalDate.of(2022, 7, 5),2);
@@ -25,7 +36,7 @@ class PNTest {
         PN pn = new PN(LocalDate.of(2022,7,2),
                 LocalDate.of(2022, 7, 5),2);
         //act
-        boolean actualResult = pn.givDosis(LocalDate.of(2022,7,4));
+        boolean actualResult = pn.givDosis(LocalDate.of(2022,7,2));
         //assert
         assertTrue(actualResult);
     }
@@ -39,7 +50,7 @@ class PNTest {
         //act
         double actualResult = pn.samletDosis();
         //assert
-        assertEquals(6.0, actualResult);
+        assertEquals(8.0, actualResult);
     }
 
     @Test
@@ -50,7 +61,7 @@ class PNTest {
         //act
         double actualResult = pn.samletDosis();
         //assert
-        assertEquals(62, actualResult);
+        assertEquals(64, actualResult);
     }
 
     @Test
@@ -61,8 +72,7 @@ class PNTest {
         //act
         double actualResult = pn.samletDosis();
         //assert
-        assertEquals(730, actualResult);
+        assertEquals(732, actualResult);
     }
-
 
 }
