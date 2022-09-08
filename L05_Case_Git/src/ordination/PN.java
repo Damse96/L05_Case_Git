@@ -31,7 +31,11 @@ public class PN extends Ordination {
 
     @Override
     public double samletDosis() {
-        return antalEnheder * super.getSlutDato().compareTo(getStartDato());
+        return antalEnheder * super.getSlutDato().getChronology().compareTo(super.getStartDato().getChronology());
+    }
+
+    public void s() {
+        System.out.println(super.getSlutDato().compareTo(getStartDato()));
     }
 
     @Override
