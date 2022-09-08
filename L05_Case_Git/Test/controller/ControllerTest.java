@@ -1,10 +1,11 @@
 package controller;
 
+
 import ordination.*;
 
-import java.time.LocalDate;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDate;
 
 class ControllerTest {
 
@@ -38,20 +39,22 @@ class ControllerTest {
     jane, paracetamol, 123);
 
 
-    @org.junit.jupiter.api.Test
+    @Test
     void opretDagligSkaevOrdination() {
+        opretDagligSkaevOrdination();
+
 
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void ordinationPNAnvendt() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void anbefaletDosisPrDoegn() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void antalOrdinationerPrVaegtPrLaegemiddel() {
     }
 
