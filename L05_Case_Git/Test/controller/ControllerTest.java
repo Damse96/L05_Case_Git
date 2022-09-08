@@ -4,9 +4,11 @@ package controller;
 import ordination.*;
 
 import org.junit.jupiter.api.Test;
-import storage.Storage;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+
+import static junit.framework.TestCase.assertEquals;
 
 class ControllerTest {
     Patient jane = new Patient("050972-1233", "Hans Jørgensen", 89.4);
@@ -40,19 +42,44 @@ class ControllerTest {
 
 
     @Test
-    void opretDagligSkaevOrdination() {
-        Controller.initStorage();
+    void opretPNOrdination() {
+        PN pn = Controller.opretPNOrdination(
+                LocalDate.parse("2019-01-01"),
+                LocalDate.parse("2019-01-12"),
+                new Patient("050972-1233", "Hans Jørgensen", 89.4),
+                new Laegemiddel("Paracetamol", 1, 1.5, 2, "Ml"),
+                5
+        );
+        //assertEquals(4,pn.);
+    }
 
+    @Test
+    void opretDagligFastOrdination() {
+        DagligFast dagligFast = Controller.opretDagligFastOrdination(
+                LocalDate.parse("2019-01-01"),
+                LocalDate.parse("2019-01-12"),
+                new Patient("050972-1233", "Hans Jørgensen", 89.4),
+                new Laegemiddel("Paracetamol", 1, 1.5, 2, "Ml"),
+                6,
+                4,
+                5,
+                2
+        );
+        assertEquals(4,dagligFast.getDoser().length);
+    }
+    @Test
+    void opretDagligSkaevOrdination() {
         DagligSkaev dagligSkaev = Controller.opretDagligSkaevOrdination(
                 LocalDate.parse("2019-01-01"),
                 LocalDate.parse("2019-01-12"),
-                ,
-                paracetamol,
-
+                new Patient("050972-1233", "Hans Jørgensen", 89.4),
+                new Laegemiddel("Paracetamol", 1, 1.5, 2, "Ml"),
+                new LocalTime[]{LocalTime.parse("09:00"), LocalTime.parse("11:00"), LocalTime.parse("14:00"), LocalTime.parse("19:00")},
+                new double[] {1,2,0,2}
         );
-
-
+        assertEquals(4,dagligSkaev.getDoser().size());
     }
+
 
     @Test
     void ordinationPNAnvendt() {
@@ -65,10 +92,5 @@ class ControllerTest {
     @Test
     void antalOrdinationerPrVaegtPrLaegemiddel() {
     }
-
-
-
-
-
 
 }

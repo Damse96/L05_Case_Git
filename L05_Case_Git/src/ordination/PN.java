@@ -9,7 +9,6 @@ public class PN extends Ordination {
     public PN(LocalDate startDato, LocalDate slutDato, double antalEnheder) {
         super(startDato, slutDato);
         this.antalEnheder = antalEnheder;
-
     }
 
     /**
@@ -32,7 +31,7 @@ public class PN extends Ordination {
 
     @Override
     public double samletDosis() {
-        return antalEnheder  * super.getSlutDato().compareTo(getStartDato());
+        return antalEnheder * super.getSlutDato().compareTo(getStartDato());
     }
 
     @Override
