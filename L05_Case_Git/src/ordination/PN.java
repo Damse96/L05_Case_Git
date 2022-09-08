@@ -32,7 +32,7 @@ public class PN extends Ordination {
 
     @Override
     public double samletDosis() {
-        return antalEnheder  * super.getStartDato().compareTo(getSlutDato());
+        return antalEnheder  * super.getSlutDato().compareTo(getStartDato());
     }
 
     @Override

@@ -37,6 +37,7 @@ public abstract class Controller {
      * og ordinationen oprettes ikke.
      * Pre: morgenAntal, middagAntal, aftenAntal, natAntal >= 0
      */
+
     public static DagligFast opretDagligFastOrdination(
             LocalDate startDato, LocalDate slutDato, Patient patient, Laegemiddel laegemiddel,
             double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
@@ -76,9 +77,8 @@ public abstract class Controller {
      * kastes en IllegalArgumentException.
      */
     public static void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-        if (dato.isAfter(ordination.getStartDato()) && dato.isBefore(ordination.getSlutDato()))
+        if (!ordination.givDosis(dato))
             throw new IllegalArgumentException("PN ordination er uden for gyldighedsperioden");
-        ordination.givDosis(dato);
     }
 
     /**
