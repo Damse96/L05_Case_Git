@@ -3,6 +3,7 @@ package ordination;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
 public class DagligFast extends Ordination {
     private Dosis[] doses = new Dosis[4];
@@ -21,7 +22,7 @@ public class DagligFast extends Ordination {
         for (Dosis dose : doses) {
             antal += dose.getAntal();
         }
-        return antal * super.getSlutDato().compareTo(getStartDato());
+        return antal * ChronoUnit.DAYS.between(getStartDato(), getSlutDato());
     }
 
     @Override

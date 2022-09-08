@@ -1,6 +1,7 @@
 package ordination;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class PN extends Ordination {
     private double antalEnheder;
@@ -31,11 +32,7 @@ public class PN extends Ordination {
 
     @Override
     public double samletDosis() {
-        return antalEnheder * super.getSlutDato().getChronology().compareTo(super.getStartDato().getChronology());
-    }
-
-    public void s() {
-        System.out.println(super.getSlutDato().compareTo(getStartDato()));
+        return antalEnheder * ChronoUnit.DAYS.between(getStartDato(), getSlutDato());
     }
 
     @Override
