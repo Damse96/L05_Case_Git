@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Case_Test/Case_Test.iml" filepath="$PROJECT_DIR$/Case_Test/Case_Test.iml" />
       <module fileurl="file://$PROJECT_DIR$/GitTest.iml" filepath="$PROJECT_DIR$/GitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/L01_Java_Collections_Framework_rigitg/L01_Java_Collections_Framework_rigitg.iml" filepath="$PROJECT_DIR$/L01_Java_Collections_Framework_rigitg/L01_Java_Collections_Framework_rigitg.iml" />
       <module fileurl="file://$PROJECT_DIR$/L02_Lambda_Funktioner_rigtig/L02_Lambda_Funktioner_rigtig.iml" filepath="$PROJECT_DIR$/L02_Lambda_Funktioner_rigtig/L02_Lambda_Funktioner_rigtig.iml" />

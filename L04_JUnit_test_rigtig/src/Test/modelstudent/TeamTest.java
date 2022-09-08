@@ -1,7 +1,5 @@
 package Test.modelstudent;
 
-import model.Student;
-import model.Team;
 import org.junit.jupiter.api.Test;
 import src.model.Student;
 import src.model.Team;
