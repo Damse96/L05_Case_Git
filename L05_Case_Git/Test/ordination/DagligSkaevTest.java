@@ -12,7 +12,8 @@ class DagligSkaevTest {
     @Test
     void samletDosisDage() {
         //arrange
-        DagligSkaev ds = new DagligSkaev(LocalDate.of(2022,7,2),
+        DagligSkaev ds = new DagligSkaev(
+                LocalDate.of(2022,7,2),
                 LocalDate.of(2022, 7, 5));
         ds.opretDosis(LocalTime.of(12,15), 2);
         //act

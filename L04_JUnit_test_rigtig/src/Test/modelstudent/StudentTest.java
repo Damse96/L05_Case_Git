@@ -1,7 +1,6 @@
 package Test.modelstudent;
 
-import model.Student;
-import model.TooManyGradesException;
+
 import org.junit.jupiter.api.Test;
 import src.model.Student;
 

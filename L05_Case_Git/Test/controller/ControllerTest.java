@@ -9,7 +9,8 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 class ControllerTest {
     @Test
@@ -21,15 +22,15 @@ class ControllerTest {
                 new Laegemiddel("Paracetamol", 1, 1.5, 2, "Ml"),
                 5
         );
-        PN pnAktuel = new PN(
+        PN pnExpected = new PN(
                 LocalDate.parse("2019-01-01"),
                 LocalDate.parse("2019-01-12"),
                 5
         );
 
-        assertEquals(pnAktuel.getSlutDato(), pn.getSlutDato());
-        assertEquals(pnAktuel.getStartDato(), pn.getStartDato());
-        assertEquals(pnAktuel.getType(), pn.getType());
+        assertEquals(pnExpected.getSlutDato(), pn.getSlutDato());
+        assertEquals(pnExpected.getStartDato(), pn.getStartDato());
+        assertEquals(pnExpected.getType(), pn.getType());
     }
 
     @Test
@@ -42,14 +43,14 @@ class ControllerTest {
                 6, 4, 5, 2
         );
 
-        DagligFast dagligFastAktuel = new DagligFast(
+        DagligFast dagligFastExpected = new DagligFast(
                 LocalDate.parse("2019-01-01"),
                 LocalDate.parse("2019-01-12"),
                 6, 4, 5, 2
         );
-        assertEquals(dagligFastAktuel.getSlutDato(), dagligFast.getSlutDato());
-        assertEquals(dagligFastAktuel.getStartDato(), dagligFast.getStartDato());
-        assertEquals(dagligFastAktuel.getType(), dagligFast.getType());
+        assertEquals(dagligFastExpected.getSlutDato(), dagligFast.getSlutDato());
+        assertEquals(dagligFastExpected.getStartDato(), dagligFast.getStartDato());
+        assertEquals(dagligFastExpected.getType(), dagligFast.getType());
     }
 
 
@@ -63,14 +64,14 @@ class ControllerTest {
                 new LocalTime[]{LocalTime.parse("09:00"), LocalTime.parse("11:00"), LocalTime.parse("14:00"), LocalTime.parse("19:00")},
                 new double[] {1,2,0,2}
         );
-        DagligSkaev dagligSkaevAktuel = new DagligSkaev(
+        DagligSkaev dagligSkaevExpected = new DagligSkaev(
                 LocalDate.parse("2019-01-01"),
                 LocalDate.parse("2019-01-12")
         );
 
-        assertEquals(dagligSkaevAktuel.getSlutDato(), dagligSkaev.getSlutDato());
-        assertEquals(dagligSkaevAktuel.getStartDato(), dagligSkaev.getStartDato());
-        assertEquals(dagligSkaevAktuel.getType(), dagligSkaev.getType());
+        assertEquals(dagligSkaevExpected.getSlutDato(), dagligSkaev.getSlutDato());
+        assertEquals(dagligSkaevExpected.getStartDato(), dagligSkaev.getStartDato());
+        assertEquals(dagligSkaevExpected.getType(), dagligSkaev.getType());
     }
 
 
