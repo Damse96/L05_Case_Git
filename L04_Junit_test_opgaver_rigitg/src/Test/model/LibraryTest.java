@@ -1,6 +1,7 @@
 package Test.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.opTest;
+import src.model.Library;
 
 import java.time.LocalDate;
 
@@ -23,8 +24,8 @@ class LibraryTest {
 
         assertEquals(expectedPris, actualResult);
     }
-
 @Test
+
         void calculateFineAdult7Days(){
             Library lib1 = new Library("Howwarts");
             LocalDate date5 = LocalDate.parse("2022-08-01");
@@ -55,5 +56,8 @@ class LibraryTest {
 
         assertEquals(expectedPris, actualResult);
 
+    }
+
+    private void assertEquals(int expectedPris, int actualResult) {
     }
 }
